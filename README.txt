@@ -1,0 +1,1 @@
+Put your image here and rename it to photo.jpg
