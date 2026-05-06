@@ -2,9 +2,93 @@
 <html>
 <head>
     <title>My Profile</title>
+    <style>
+        body{
+            text-align:center;
+            font-family:Arial;
+            margin-top:40px;
+            background:#f5f5f5;
+        }
+
+        .post{
+            width:300px;
+            margin:auto;
+            background:white;
+            padding:20px;
+            border-radius:15px;
+            box-shadow:0 0 10px gray;
+        }
+
+        img{
+            width:100%;
+            height:350px;
+            border-radius:10px;
+            object-fit:cover;
+        }
+
+        button{
+            margin:10px;
+            padding:8px 15px;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+            font-size:18px;
+        }
+
+        .dots{
+            font-size:20px;
+            color:gray;
+        }
+    </style>
 </head>
-<body style="text-align:center; margin-top:50px;">
-    <img src="PHOTO.jpeg" width="200" height="200">
-    <h1>Vishnu he is a good boy </h1>
+<body>
+
+    <div class="post">
+        <img id="photo" src="PHOTO1.jpeg">
+        <h2>Vishnu</h2>
+
+        <button onclick="prev()">⬅</button>
+        <button onclick="next()">➡</button>
+
+        <div class="dots" id="dots"></div>
+    </div>
+
+    <script>
+        let photos = [
+            "PHOTO1.jpeg",
+            "PHOTO2.jpeg",
+            "PHOTO3.jpeg",
+            "PHOTO4.jpeg",
+            "PHOTO5.jpeg",
+            "PHOTO6.jpeg",
+            "PHOTO7.jpeg"
+        ];
+
+        let i = 0;
+
+        function showPhoto(){
+            document.getElementById("photo").src = photos[i];
+
+            let dot = "";
+            for(let j=0; j<photos.length; j++){
+                dot += (j == i) ? "● " : "○ ";
+            }
+
+            document.getElementById("dots").innerHTML = dot;
+        }
+
+        function next(){
+            i = (i + 1) % photos.length;
+            showPhoto();
+        }
+
+        function prev(){
+            i = (i - 1 + photos.length) % photos.length;
+            showPhoto();
+        }
+
+        showPhoto();
+    </script>
+
 </body>
 </html>
