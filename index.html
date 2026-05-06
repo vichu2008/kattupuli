@@ -1,51 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Profile</title>
+    <title>Vishnu</title>
     <style>
         body{
+            margin:0;
             text-align:center;
+            color:white;
             font-family:Arial;
-            margin-top:40px;
-            background:#f5f5f5;
+            overflow:hidden;
         }
 
-        .post{
-            width:300px;
-            margin:auto;
-            background:white;
+        video{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            z-index:-1;
+        }
+
+        .box{
+            width:330px;
+            margin:60px auto;
+            background:rgba(0,0,0,0.5);
             padding:20px;
-            border-radius:15px;
-            box-shadow:0 0 10px gray;
+            border-radius:20px;
         }
 
         img{
             width:100%;
-            height:350px;
-            border-radius:10px;
+            height:380px;
             object-fit:cover;
+            border-radius:15px;
         }
 
         button{
+            padding:10px 20px;
             margin:10px;
-            padding:8px 15px;
+            font-size:20px;
             border:none;
-            border-radius:5px;
+            border-radius:10px;
             cursor:pointer;
-            font-size:18px;
         }
 
         .dots{
-            font-size:20px;
-            color:gray;
+            font-size:22px;
         }
     </style>
 </head>
 <body>
 
-    <div class="post">
+    <video autoplay muted loop>
+        <source src="bg.mp4" type="video/mp4">
+    </video>
+
+    <div class="box">
         <img id="photo" src="PHOTO1.jpeg">
-        <h2>Vishnu</h2>
+        <h1>Vishnu</h1>
 
         <button onclick="prev()">⬅</button>
         <button onclick="next()">➡</button>
@@ -69,21 +82,20 @@
         function showPhoto(){
             document.getElementById("photo").src = photos[i];
 
-            let dot = "";
+            let d = "";
             for(let j=0; j<photos.length; j++){
-                dot += (j == i) ? "● " : "○ ";
+                d += (j==i) ? "● " : "○ ";
             }
-
-            document.getElementById("dots").innerHTML = dot;
+            document.getElementById("dots").innerHTML = d;
         }
 
         function next(){
-            i = (i + 1) % photos.length;
+            i = (i+1) % photos.length;
             showPhoto();
         }
 
         function prev(){
-            i = (i - 1 + photos.length) % photos.length;
+            i = (i-1+photos.length) % photos.length;
             showPhoto();
         }
 
